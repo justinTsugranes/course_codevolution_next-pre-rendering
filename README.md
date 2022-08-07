@@ -1,3 +1,51 @@
+# Notes
+
+Common examples of when you may want to use this type of pre-rendering are: displaying a list of articles on a blog homepage, displaying a list of products on a homepage, or displaying a list of topics on a documentation page.
+
+All you have to do is define the async function _getStaticProps_ fetch your data within the function and return an object with the necessary props. The props will then be availabe for use in your component
+
+---
+
+## Setup
+
+### First Steps
+
+- delete API folder from Pages
+- delete home.module.css from styles
+- changed index.js file content into simple component that returns a plain h1 tag.
+
+Using the users data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/) for test APIs
+
+---
+
+- create a new file in Pages folder named "users.js"
+
+  - within the file, defined and exported UserList compontent
+
+- in Next, when you export a page component, you can also export an async function called "getStaticProps"
+
+  - This function will run at build time in production. Inside the function, you can fetch external data and send it as "props" to the page.
+
+- go to users.js and export the getStaticProps async function
+- pass in the JSONPaceholder/users URL as an argument.
+- once you have the reponse, you convert it into JSON and log it to the console
+- then, you need to pass the data to the component above
+- this is accomplished via a return object
+- the object contains another object named 'props' that can contain any key value pairs, which will be automatically injected as props into the component.
+  - in our case, we set one property named 'users' which is set to 'data'
+  - when we return this, the userlist component will receive the props at build time
+    - so, you pass in 'props' as an arugment. you could also destructure the users property.
+- To render
+  - wrap the UserList return in a React fragment
+  - map over the list of user
+    - for each user, we're returning a div tag where the key tag is set to user.id
+    - then, we're rendering user.name and user.email
+    - you could map more, but we're only using name and email in this example
+
+---
+
+## Original README info from create-next-app
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
