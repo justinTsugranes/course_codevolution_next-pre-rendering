@@ -6,7 +6,7 @@ function UserList({ users }) {
         return (
           <div key={user.id}>
             <p>{user.name}</p>
-            <Uer user={user} />
+            <User user={user} />
           </div>
         )
       })}

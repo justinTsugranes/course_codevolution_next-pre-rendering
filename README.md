@@ -44,6 +44,21 @@ Using the users data from [JSONPlaceholder](https://jsonplaceholder.typicode.com
 
 ---
 
+### getStaticProps
+
+1. getStaticProps runs only on the server side
+   1. the fucntion will never fun client-side
+   2. the code you write inside getStaticProp won't even be included in the JS bundle that is sent to the browser
+2. You can write server-side code directly in getSaticProps
+   1. Accessing the file system using the fs moduleor querying a database can be done inside getStaticProps
+3. getStaticProps is allowed only in page and cannot be run from a regular component file
+   1. It is used only for pre-rendering and not client-side data fetching
+4. getStaticProps should return an object and object should contain a props key which is an object
+5. getStaticProps will run at build time
+   1. During development, getStaticProps runs on every request
+
+---
+
 ## Original README info from create-next-app
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
